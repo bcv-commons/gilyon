@@ -154,9 +154,17 @@ other. An annotation collection applies to every edition that has an
 alignment. A catalogue entry for a collection may state the edition its
 notes were first written on, as information for readers.
 
+## A working example
+
+`examples/code/` in the Gilyon repository has `show_in_edition`, in Python
+and in JavaScript, which carries out the five steps above for a translation
+read from helloAO with an alignment from bcv-commons/compact-alignments. It
+is an example, not a library: its limits are listed in its README.
+
 ## What does not exist yet
 
-- A published reference implementation of the five steps above.
+- A maintained library for the five steps, and one that reads translations
+  through every route of the catalogue.
 - A statement, per edition in the catalogue, of whether an alignment
   suitable for Gilyon anchors is available.
 - The Gilyon catalogue itself (`docs/open-issues.md` §21).

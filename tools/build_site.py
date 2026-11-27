@@ -130,6 +130,8 @@ def main():
         files[f"registries/{p.name}"] = f"/registries/{p.name}"
     for p in sorted((ROOT / "examples").rglob("*.json")):
         rel = p.relative_to(ROOT).as_posix()
+        if rel.startswith("examples/code/"):               # scripts, read on GitHub
+            continue
         files[rel] = f"/{VERSION}/{rel}"
     for p in sorted((ROOT / "collections").rglob("*.json")):      # collections hosted here
         rel = p.relative_to(ROOT).as_posix()

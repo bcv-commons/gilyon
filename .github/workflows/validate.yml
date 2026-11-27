@@ -36,5 +36,10 @@ jobs:
       - name: Publisher files are valid and CODEOWNERS is up to date
         run: python tools/build_catalogue.py codeowners --check .github/CODEOWNERS
 
+      - name: The code examples compile
+        run: |
+          python -m py_compile examples/code/python/*.py
+          for f in examples/code/js/*.mjs; do node --check "$f"; done
+
       - name: The site builds
         run: python tools/build_site.py

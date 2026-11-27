@@ -12,7 +12,9 @@ This repository is under two licences.
 
    Credit line: "Gilyon, the bcv-commons team, https://gilyon.org/".
 
-2. The software (tools/) is licensed under the MIT licence.
+2. The software (tools/ and examples/code/) is licensed under the MIT
+   licence. examples/code/*/verse_text/ holds unchanged copies from
+   bcv-commons/bibles, which are under CC0 1.0.
    Full text: LICENSES/MIT.txt
 
 3. The collections hosted in collections/ are not covered by the two
