@@ -26,7 +26,8 @@
         "checks": [
           "reachable",
           "checksums",
-          "valid"
+          "valid",
+          "cors"
         ]
       },
       "status": "listed",
