@@ -1,0 +1,86 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/collection",
+  "title": {
+    "en": "Example collection with bodies in two languages",
+    "sv": "Exempelsamling med nottext på två språk"
+  },
+  "license": "CC-BY-4.0",
+  "attribution": "The bcv-commons team. Written for this specification.",
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    },
+    "grc": {
+      "role": "base",
+      "edition": "N1904",
+      "release": "24.06.17"
+    }
+  },
+  "created": "2026-11-27T00:00:00Z",
+  "sourceLanguage": "en",
+  "languages": {
+    "en": {
+      "dir": "eng"
+    },
+    "sv": {
+      "dir": "swe",
+      "translation": {
+        "status": "machine",
+        "method": "Claude (Anthropic), unreviewed"
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "gen001.gilyon.json",
+      "sha256": "ea646483235e1d3fb4e6a785c3cd8a674288f6634f7515e9bc5faa224a83c30c",
+      "books": [
+        "GEN"
+      ],
+      "id": "https://gilyon.org/0.1/examples/collection/gen001",
+      "ref": "GEN 1",
+      "annotations": 5,
+      "bodies": {
+        "en": {
+          "path": "eng/gen001.gilyon-bodies.json",
+          "sha256": "e58e883aa1d9ac8a6afcd92717f30a2368885361df6cb3a9f34e4dcb2de7d1d8",
+          "id": "https://gilyon.org/0.1/examples/collection/eng/gen001",
+          "entries": 4
+        },
+        "sv": {
+          "path": "swe/gen001.gilyon-bodies.json",
+          "sha256": "beab1cb5b6ad3e0ba6df919edb93c57599cb263bedefee577fb3154d7b7cd141",
+          "id": "https://gilyon.org/0.1/examples/collection/swe/gen001",
+          "entries": 4
+        }
+      }
+    },
+    {
+      "path": "jhn001.gilyon.json",
+      "sha256": "08326d0c96f1209982b1ce3de07b9be0c05b06619d2900edc50a16eda6cad3b4",
+      "books": [
+        "JHN"
+      ],
+      "id": "https://gilyon.org/0.1/examples/collection/jhn001",
+      "ref": "JHN 1",
+      "annotations": 1,
+      "bodies": {
+        "en": {
+          "path": "eng/jhn001.gilyon-bodies.json",
+          "sha256": "4d7d50a622530de41b0af3c74106c2ad6c67e937381516abf79089e06aa83fa5",
+          "id": "https://gilyon.org/0.1/examples/collection/eng/jhn001",
+          "entries": 2
+        },
+        "sv": {
+          "path": "swe/jhn001.gilyon-bodies.json",
+          "sha256": "fea9c1e02059446e036ccb67949471b5fd1e7bc02a16b3c1b7560afc83ff8dd3",
+          "id": "https://gilyon.org/0.1/examples/collection/swe/jhn001",
+          "entries": 2
+        }
+      }
+    }
+  ]
+}

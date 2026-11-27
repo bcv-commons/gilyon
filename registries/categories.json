@@ -1,0 +1,50 @@
+{
+  "registry": "categories",
+  "gilyon": "0.1",
+  "vocabularies": [
+    { "prefix": "gilyon", "title": "Gilyon core categories", "status": "draft" },
+    { "prefix": "uw", "title": "unfoldingWord translationAcademy support references", "example": "uw:figs-metaphor", "url": "https://git.door43.org/unfoldingWord/en_ta" }
+  ],
+  "terms": {
+    "note": {
+      "study": "Explanatory note for readers.",
+      "translation": "How the passage is or can be translated.",
+      "textual": "The wording of the source text and its witnesses.",
+      "literal": "A more literal rendering.",
+      "alternative": "An alternative rendering.",
+      "background": "Historical, geographical or cultural background.",
+      "chronology": "Dating of an event.",
+      "devotional": "Devotional or applicational comment.",
+      "personal": "A user's own note.",
+      "introduction": "Introduction to a book or section.",
+      "glossary": "Reference to a glossary or key-term entry.",
+      "review": "Note addressed to reviewers of a translation, not to readers."
+    },
+    "crossref": {
+      "quotation": "The passage quotes or is quoted by another.",
+      "allusion": "Allusion or echo.",
+      "parallel": "Parallel account or wording.",
+      "see-also": "General cross reference."
+    },
+    "figure": {
+      "comparison": { "simile": "", "metaphor": "", "personification": "", "anthropomorphism": "" },
+      "omission": { "ellipsis": "", "aposiopesis": "Sudden silence: a sentence deliberately left unfinished.", "asyndeton": "" },
+      "addition": { "repetition": "", "polysyndeton": "", "pleonasm": "", "hendiadys": "" },
+      "substitution": { "metonymy": "", "synecdoche": "", "euphemism": "", "irony": "", "hyperbole": "", "litotes": "", "idiom": "" },
+      "arrangement": { "hyperbaton": "", "rhetorical-question": "", "merism": "", "wordplay": "" }
+    },
+    "structure": {
+      "chiasm": "Units mirrored around a centre.",
+      "parallelism": "Parallel lines or cola.",
+      "inclusio": "A unit framed by repeated wording.",
+      "acrostic": "Units ordered by initial letter.",
+      "refrain": "A recurring line or stanza."
+    },
+    "entity": { "person": "", "place": "", "group": "", "event": "" },
+    "discourse": { "speaker": "Who speaks.", "quotation": "Quoted speech." }
+  },
+  "legacyMappings": {
+    "make-tanakh inline note kinds": { "T": "gilyon:note/textual or gilyon:note/literal (project-dependent)", "E": "gilyon:note/study", "H": "gilyon:crossref/see-also", "N": "gilyon:note/review or gilyon:note/glossary (project-dependent)" },
+    "USFM": { "\\f": "gilyon:note/* with presentation.placement footnote", "\\x": "gilyon:crossref/*", "\\ef": "gilyon:note/study", "\\esb": "gilyon:note/background with presentation.placement sidebar" }
+  }
+}

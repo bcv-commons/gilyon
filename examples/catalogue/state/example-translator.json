@@ -1,0 +1,43 @@
+{
+  "publisher": "example-translator",
+  "discovered": "2026-11-27",
+  "entries": [
+    {
+      "manifest": "../translation-elsewhere/manifest.json",
+      "id": "https://gilyon.org/0.1/examples/translation-elsewhere",
+      "of": "https://gilyon.org/0.1/examples/collection",
+      "title": {
+        "de": "Beispiel: deutsche Übersetzung einer Sammlung, getrennt veröffentlicht",
+        "en": "Example: a German translation of a collection, published separately"
+      },
+      "license": "CC-BY-4.0",
+      "attribution": "German translation: the bcv-commons team. Original notes: the bcv-commons team.",
+      "languages": [
+        "de"
+      ],
+      "folders": {
+        "de": "deu"
+      },
+      "translation": {
+        "status": "machine",
+        "evidence": "claimed"
+      },
+      "checked": {
+        "date": "2026-11-27",
+        "result": "ok",
+        "manifestSha256": "5dfc18154766488963a10b08eb2f8749def66307eba8bca734e03eb506f0994a",
+        "checks": [
+          "reachable",
+          "checksums",
+          "valid",
+          "translation"
+        ],
+        "bodies": {
+          "machine": 4
+        }
+      },
+      "status": "listed",
+      "added": "2026-11-27"
+    }
+  ]
+}

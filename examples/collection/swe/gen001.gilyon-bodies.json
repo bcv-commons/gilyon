@@ -1,0 +1,68 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/collection/swe/gen001",
+  "of": "https://gilyon.org/0.1/examples/collection/gen001",
+  "meta": {
+    "language": "sv",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification.",
+    "creator": [
+      {
+        "type": "Software",
+        "name": "Claude"
+      }
+    ]
+  },
+  "translationOf": "en",
+  "translation": {
+    "status": "machine",
+    "method": "Claude (Anthropic), unreviewed",
+    "date": "2026-11-27"
+  },
+  "entries": [
+    {
+      "annotation": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "body": [
+        {
+          "value": "Verbet står i singular, trots att ordet för Gud som följer har pluralform.",
+          "translation": {
+            "sourceDigest": "d4606ccbad56b4b6390c60618c127f49f39581c47cf7c649ef38d4b3fe1754c8"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:b962819f-00fd-5a6a-b602-58fb9ffc18b5",
+      "body": [
+        {
+          "value": "Två ytterligheter nämns för att beteckna allt som ligger mellan dem: allt som finns.",
+          "translation": {
+            "sourceDigest": "861765f32fd3460d04530863418c2e11e2f4799da6c5a3e5f597754099bbf2bb"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:31155b51-21cc-56f6-9c28-0246e3995354",
+      "body": [
+        {
+          "value": "De två hebreiska orden rimmar (tohu wa-bohu). Få översättningar behåller klangen.",
+          "translation": {
+            "sourceDigest": "bf2db6aaf977d0eca4d89cd89b6f2f92ba328d32981eaaeedddc1b8202148866"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:d42e12b0-a6ff-53f0-bacb-fb074bf3bd6e",
+      "body": [
+        {
+          "value": "Början; den första eller bästa delen av något. Noten gäller överallt där lexemet förekommer.",
+          "translation": {
+            "sourceDigest": "f0cf9ded511951bd26ab951511263745428773b34eee683ff7cd08ce68ee4b08"
+          }
+        }
+      ]
+    }
+  ]
+}

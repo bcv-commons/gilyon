@@ -1,0 +1,40 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      - name: Valid examples validate
+        run: python tools/validate.py examples/*.gilyon.json examples/catalogue/published/index.json
+
+      - name: Invalid examples fail
+        run: |
+          for f in examples/invalid/*.gilyon.json examples/invalid/*/manifest.json; do
+            if python tools/validate.py "$f" > /dev/null; then
+              echo "::error file=$f::validates, but must fail"
+              exit 1
+            fi
+          done
+
+      - name: The example catalogue is what its publisher files and state give
+        run: python tools/build_catalogue.py build --dir examples/catalogue --check examples/catalogue/published
+
+      - name: Publisher files are valid and CODEOWNERS is up to date
+        run: python tools/build_catalogue.py codeowners --check .github/CODEOWNERS
+
+      - name: The site builds
+        run: python tools/build_site.py

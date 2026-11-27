@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://gilyon.org/ns#",
+    "oa": "http://www.w3.org/ns/oa#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "id": "@id",
+    "type": "@type",
+    "meta": "@nest",
+
+    "gilyon": "https://gilyon.org/ns#formatVersion",
+    "conformsTo": "https://gilyon.org/ns#level",
+    "texts": { "@id": "https://gilyon.org/ns#declaresText", "@container": "@index", "@index": "localName" },
+    "annotations": { "@id": "https://gilyon.org/ns#annotation", "@container": "@set" },
+
+    "motivation": { "@id": "oa:motivatedBy", "@type": "@vocab", "@context": { "@vocab": "http://www.w3.org/ns/oa#" } },
+    "body": { "@id": "oa:hasBody", "@container": "@set" },
+    "target": "oa:hasTarget",
+    "selector": "oa:hasSelector",
+    "value": "rdf:value",
+    "language": "dc:language",
+    "format": "dc:format",
+    "purpose": { "@id": "oa:hasPurpose", "@type": "@vocab", "@context": { "@vocab": "http://www.w3.org/ns/oa#" } },
+
+    "title": { "@id": "dcterms:title", "@container": "@language" },
+    "description": { "@id": "dcterms:description", "@container": "@language" },
+    "label": { "@id": "https://gilyon.org/ns#label", "@container": "@language" },
+    "creator": "dcterms:creator",
+    "publisher": "dcterms:publisher",
+    "created": { "@id": "dcterms:created", "@type": "xsd:dateTime" },
+    "modified": { "@id": "dcterms:modified", "@type": "xsd:dateTime" },
+    "license": "dcterms:license",
+    "licenseUrl": { "@id": "dcterms:rights", "@type": "@id" },
+    "source": "dcterms:source",
+    "supersedes": { "@id": "https://gilyon.org/ns#supersedes", "@type": "@id" },
+    "annotation": { "@id": "https://gilyon.org/ns#annotationTarget", "@type": "@id" },
+    "url": { "@id": "https://gilyon.org/ns#url", "@type": "@id" },
+
+    "status": { "@id": "https://gilyon.org/ns#status", "@type": "@vocab" },
+    "rel": { "@id": "https://gilyon.org/ns#rel", "@type": "@vocab" },
+    "check": { "@id": "https://gilyon.org/ns#check", "@type": "@json" },
+    "lexemes": { "@id": "https://gilyon.org/ns#lexemes", "@type": "@json" },
+    "units": {
+      "@id": "https://gilyon.org/ns#unit",
+      "@container": "@list",
+      "@context": { "id": "https://gilyon.org/ns#unitId" }
+    },
+    "relations": {
+      "@id": "https://gilyon.org/ns#relation",
+      "@context": {
+        "type": "https://gilyon.org/ns#relationType",
+        "units": "https://gilyon.org/ns#relatedUnit"
+      }
+    }
+  }
+}

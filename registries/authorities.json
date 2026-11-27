@@ -1,0 +1,40 @@
+{
+  "registry": "authorities",
+  "gilyon": "0.1",
+  "entries": [
+    {
+      "prefix": "acai",
+      "title": "ACAI entity identifiers (Bible Aquifer)",
+      "example": "acai:person:Joshua",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://github.com/BibleAquifer/ACAI"
+    },
+    {
+      "prefix": "tipnr",
+      "title": "Tyndale Individualised Proper Names with all References (STEPBible)",
+      "license": "CC-BY-4.0",
+      "url": "https://github.com/STEPBible/STEPBible-Data"
+    },
+    {
+      "prefix": "openbible",
+      "title": "OpenBible.info Bible Geocoding place identifiers",
+      "license": "CC-BY-4.0",
+      "url": "https://github.com/openbibleinfo/Bible-Geocoding-Data"
+    },
+    {
+      "prefix": "pleiades",
+      "title": "Pleiades gazetteer of ancient places",
+      "url": "https://pleiades.stoa.org/"
+    },
+    {
+      "prefix": "wikidata",
+      "title": "Wikidata items",
+      "license": "CC0-1.0"
+    },
+    {
+      "prefix": "strong",
+      "title": "Strong's numbers used as a name identifier of last resort",
+      "example": "strong:H5019"
+    }
+  ]
+}

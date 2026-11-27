@@ -1,0 +1,35 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/translation-elsewhere",
+  "of": "https://gilyon.org/0.1/examples/collection",
+  "ofManifest": "../collection/manifest.json",
+  "title": {
+    "de": "Beispiel: deutsche Übersetzung einer Sammlung, getrennt veröffentlicht",
+    "en": "Example: a German translation of a collection, published separately"
+  },
+  "license": "CC-BY-4.0",
+  "attribution": "German translation: the bcv-commons team. Original notes: the bcv-commons team.",
+  "created": "2026-11-27T00:00:00Z",
+  "languages": {
+    "de": {
+      "dir": "deu",
+      "translation": {
+        "status": "machine",
+        "method": "Claude (Anthropic), unreviewed"
+      }
+    }
+  },
+  "files": [
+    {
+      "id": "https://gilyon.org/0.1/examples/collection/gen001",
+      "bodies": {
+        "de": {
+          "path": "deu/gen001.gilyon-bodies.json",
+          "sha256": "c3111b445663765057923bb830d7eb2adafdf02064db873186aa3fe8f4c79f21",
+          "id": "https://gilyon.org/0.1/examples/translation-elsewhere/deu/gen001",
+          "entries": 4
+        }
+      }
+    }
+  ]
+}

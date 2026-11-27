@@ -1,0 +1,14 @@
+{
+  "registry": "versifications",
+  "gilyon": "0.1",
+  "entries": [
+    { "name": "org", "title": "Original (Hebrew numbering for the Old Testament; Nestle 1904 numbering for the New)", "source": "Paratext org.vrs; Copenhagen Alliance org.json" },
+    { "name": "eng", "title": "English", "source": "Paratext eng.vrs; Copenhagen Alliance eng.json" },
+    { "name": "lxx", "title": "Septuagint", "source": "Paratext lxx.vrs; Copenhagen Alliance lxx.json" },
+    { "name": "vul", "title": "Vulgate", "source": "Paratext vul.vrs; Copenhagen Alliance vul.json" },
+    { "name": "rsc", "title": "Russian Protestant (canonical)", "source": "Paratext rsc.vrs; Copenhagen Alliance rsc.json" },
+    { "name": "rso", "title": "Russian Orthodox", "source": "Paratext rso.vrs; Copenhagen Alliance rso.json" }
+  ],
+  "customSchemes": "A custom scheme is named by the IRI of a mapping to org in the Copenhagen Alliance versification JSON format.",
+  "notes": "bcv-commons uses further scheme names (orgw, catm). They are candidates for registration once their mappings are published at a stable address."
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gilyon.org/0.1/bodies.schema.json",
+  "title": "Gilyon 0.1 — body document (spec §16.2)",
+  "description": "The bodies of the annotations of one annotation document, in one language. Structural validation only; that the entries name annotations of that document is checked by tools/validate.py on the manifest.",
+  "type": "object",
+  "required": [
+    "gilyon",
+    "id",
+    "of",
+    "meta",
+    "entries"
+  ],
+  "properties": {
+    "gilyon": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "$ref": "schema.json#/$defs/iri"
+    },
+    "of": {
+      "$ref": "schema.json#/$defs/iri"
+    },
+    "meta": {
+      "allOf": [
+        {
+          "$ref": "schema.json#/$defs/meta"
+        },
+        {
+          "required": [
+            "language"
+          ]
+        }
+      ]
+    },
+    "translationOf": {
+      "$ref": "schema.json#/$defs/languageTag"
+    },
+    "translation": {
+      "$ref": "schema.json#/$defs/translation"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "annotation",
+          "body"
+        ],
+        "properties": {
+          "annotation": {
+            "$ref": "schema.json#/$defs/iri"
+          },
+          "unit": {
+            "$ref": "schema.json#/$defs/unitId"
+          },
+          "body": {
+            "$ref": "schema.json#/$defs/bodies"
+          }
+        }
+      }
+    }
+  }
+}

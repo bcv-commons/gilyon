@@ -1,0 +1,47 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/collection/swe/jhn001",
+  "of": "https://gilyon.org/0.1/examples/collection/jhn001",
+  "meta": {
+    "language": "sv",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification.",
+    "creator": [
+      {
+        "type": "Software",
+        "name": "Claude"
+      }
+    ]
+  },
+  "translationOf": "en",
+  "translation": {
+    "status": "machine",
+    "method": "Claude (Anthropic), unreviewed",
+    "date": "2026-11-27"
+  },
+  "entries": [
+    {
+      "annotation": "urn:uuid:273e5570-fd03-5555-b57e-1a69cf12a29f",
+      "body": [
+        {
+          "value": "Tre satser med samma verb och samma subjekt. Varje sats tar upp ett ord från slutet av den föregående: Ordet ... Ordet, Gud ... Gud.",
+          "translation": {
+            "sourceDigest": "d33129113d85bcc9cbc752ae2d2459bd536998d8007a9ffe6e7cc4110a9be6a4"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:273e5570-fd03-5555-b57e-1a69cf12a29f",
+      "unit": "C",
+      "body": [
+        {
+          "value": "I grekiskan står predikatsfyllnaden först.",
+          "translation": {
+            "sourceDigest": "670b5bc9f96208fbe32445098d09afbe9b3b5a6eb0ba99c7f8b6c300051dfd09"
+          }
+        }
+      ]
+    }
+  ]
+}

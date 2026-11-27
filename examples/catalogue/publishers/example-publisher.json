@@ -1,0 +1,11 @@
+{
+  "name": "Example Publisher",
+  "id": "https://publisher.example/",
+  "added": "2026-11-27",
+  "maintainers": [
+    { "github": "example-publisher", "name": "A. Publisher", "role": "publisher", "since": "2026-11-27" }
+  ],
+  "sources": [
+    { "type": "manifests", "manifests": ["../collection/manifest.json"] }
+  ]
+}

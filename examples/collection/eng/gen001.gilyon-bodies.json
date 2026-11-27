@@ -1,0 +1,44 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/collection/eng/gen001",
+  "of": "https://gilyon.org/0.1/examples/collection/gen001",
+  "meta": {
+    "language": "en",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification."
+  },
+  "entries": [
+    {
+      "annotation": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "body": [
+        {
+          "value": "The verb is singular, although the word for God that follows it is plural in form."
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:b962819f-00fd-5a6a-b602-58fb9ffc18b5",
+      "body": [
+        {
+          "value": "Two extremes are named to mean everything that lies between them: all that exists."
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:31155b51-21cc-56f6-9c28-0246e3995354",
+      "body": [
+        {
+          "value": "The two Hebrew words rhyme (tohu wa-bohu). Few translations keep the sound."
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:d42e12b0-a6ff-53f0-bacb-fb074bf3bd6e",
+      "body": [
+        {
+          "value": "Beginning; the first or best part of something. This note applies wherever the lexeme occurs."
+        }
+      ]
+    }
+  ]
+}

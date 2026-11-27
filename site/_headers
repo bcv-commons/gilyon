@@ -1,0 +1,10 @@
+/*
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+
+/0.1/context.jsonld
+  Content-Type: application/ld+json; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/0.1/*.json
+  Cache-Control: public, max-age=86400

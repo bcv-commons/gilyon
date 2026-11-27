@@ -1,0 +1,68 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/translation-elsewhere/deu/gen001",
+  "of": "https://gilyon.org/0.1/examples/collection/gen001",
+  "meta": {
+    "language": "de",
+    "license": "CC-BY-4.0",
+    "attribution": "German translation: the bcv-commons team. Original notes: the bcv-commons team.",
+    "creator": [
+      {
+        "type": "Software",
+        "name": "Claude"
+      }
+    ]
+  },
+  "translationOf": "en",
+  "translation": {
+    "status": "machine",
+    "method": "Claude (Anthropic), unreviewed",
+    "date": "2026-11-27"
+  },
+  "entries": [
+    {
+      "annotation": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "body": [
+        {
+          "value": "Das Verb steht im Singular, obwohl das darauf folgende Wort für Gott der Form nach ein Plural ist.",
+          "translation": {
+            "sourceDigest": "d4606ccbad56b4b6390c60618c127f49f39581c47cf7c649ef38d4b3fe1754c8"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:b962819f-00fd-5a6a-b602-58fb9ffc18b5",
+      "body": [
+        {
+          "value": "Zwei Extreme werden genannt, um alles zu bezeichnen, was zwischen ihnen liegt: alles, was existiert.",
+          "translation": {
+            "sourceDigest": "861765f32fd3460d04530863418c2e11e2f4799da6c5a3e5f597754099bbf2bb"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:31155b51-21cc-56f6-9c28-0246e3995354",
+      "body": [
+        {
+          "value": "Die beiden hebräischen Wörter reimen sich (tohu wa-bohu). Nur wenige Übersetzungen bewahren den Klang.",
+          "translation": {
+            "sourceDigest": "bf2db6aaf977d0eca4d89cd89b6f2f92ba328d32981eaaeedddc1b8202148866"
+          }
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:d42e12b0-a6ff-53f0-bacb-fb074bf3bd6e",
+      "body": [
+        {
+          "value": "Anfang; der erste oder beste Teil von etwas. Diese Anmerkung gilt überall, wo das Lexem vorkommt.",
+          "translation": {
+            "sourceDigest": "f0cf9ded511951bd26ab951511263745428773b34eee683ff7cd08ce68ee4b08"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "registry": "methods",
+  "gilyon": "0.1",
+  "entries": [
+    {
+      "id": "bcv-lexeme-anchor/1",
+      "title": "Point anchoring between aligned content lexemes",
+      "definition": "spec/gilyon-0.1.md, Appendix C",
+      "implementation": "bcv-commons tooling, not yet published.",
+      "yields": ["Point"],
+      "tiers": {
+        "high": ["HIGH", "GLOSS"],
+        "medium": ["MEDIUM"],
+        "low": ["LOW_GAP", "NO_BEFORE", "MID_NO_AFTER", "REVERSED"]
+      }
+    },
+    {
+      "id": "quote-occurrence/1",
+      "title": "Resolution of an original-language quote plus occurrence number to word identifiers",
+      "definition": "Match the quoted words, in order, against the verse of the base text after NFC normalisation and removal of cantillation; select the n-th match.",
+      "yields": ["Words", "Range"],
+      "notes": "Converts unfoldingWord Translation Notes anchors."
+    }
+  ]
+}

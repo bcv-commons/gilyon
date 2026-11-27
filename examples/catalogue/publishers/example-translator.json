@@ -1,0 +1,11 @@
+{
+  "name": "Example Translators",
+  "added": "2026-11-27",
+  "maintainers": [
+    { "github": "example-translator", "role": "delegate", "since": "2026-11-27",
+      "delegation": "https://translator.example/delegation-statement" }
+  ],
+  "sources": [
+    { "type": "manifests", "manifests": ["../translation-elsewhere/manifest.json"] }
+  ]
+}

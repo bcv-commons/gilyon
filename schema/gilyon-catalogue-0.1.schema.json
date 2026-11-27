@@ -1,0 +1,667 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gilyon.org/0.1/catalogue.schema.json",
+  "title": "Gilyon 0.1 — catalogue of collections, whole, as a slice, or as an index of slices (spec §16.4)",
+  "type": "object",
+  "required": [
+    "gilyon"
+  ],
+  "properties": {
+    "gilyon": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+    },
+    "title": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "modified": {
+      "type": "string"
+    },
+    "collections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/collection"
+      }
+    },
+    "slice": {
+      "type": "object",
+      "required": [
+        "by",
+        "value"
+      ],
+      "properties": {
+        "by": {
+          "enum": [
+            "language",
+            "publisher",
+            "collection"
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "collections": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "translations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "publishers": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "languages": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "languages": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "path"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collections": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "translations": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "publishers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "path"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "collections": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "translations": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "maintainers": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "github"
+              ],
+              "properties": {
+                "github": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "enum": [
+                    "publisher",
+                    "delegate"
+                  ]
+                },
+                "since": {
+                  "type": "string"
+                },
+                "delegation": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "status": {
+            "enum": [
+              "listed",
+              "flagged",
+              "withdrawn"
+            ]
+          },
+          "added": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "collectionPath": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "collection": {
+      "type": "object",
+      "required": [
+        "id",
+        "manifest",
+        "license"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+        },
+        "manifest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "publisher": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+            },
+            "type": {
+              "enum": [
+                "Person",
+                "Organization",
+                "Software"
+              ]
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "name"
+              ]
+            },
+            {
+              "required": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licenseUrl": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+        },
+        "attribution": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "uniqueItems": true
+        },
+        "checked": {
+          "type": "object",
+          "required": [
+            "date",
+            "result"
+          ],
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "result": {
+              "enum": [
+                "ok",
+                "failed",
+                "unreachable"
+              ]
+            },
+            "manifestSha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "note": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "stale": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bodies": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "machine": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "reviewed": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "human": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "added": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "listed",
+            "flagged",
+            "withdrawn"
+          ]
+        },
+        "sourceLanguage": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$"
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z0-9]{3}$"
+          }
+        },
+        "level": {
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "annotations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hosting": {
+          "enum": [
+            "publisher",
+            "republished"
+          ]
+        },
+        "translations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/translation"
+          }
+        },
+        "maintainers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "github"
+            ],
+            "properties": {
+              "github": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$"
+              },
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "publisher",
+                  "delegate"
+                ]
+              },
+              "since": {
+                "type": "string"
+              },
+              "delegation": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flag": {
+          "type": "object",
+          "required": [
+            "since",
+            "reason"
+          ],
+          "properties": {
+            "since": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "translation": {
+      "type": "object",
+      "required": [
+        "id",
+        "manifest",
+        "license",
+        "languages"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+        },
+        "manifest": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "publisher": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+            },
+            "type": {
+              "enum": [
+                "Person",
+                "Organization",
+                "Software"
+              ]
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "name"
+              ]
+            },
+            {
+              "required": [
+                "id"
+              ]
+            }
+          ]
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licenseUrl": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+        },
+        "attribution": {
+          "type": "string"
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z]{2,8}(-[A-Za-z0-9]{1,8})*$"
+          },
+          "uniqueItems": true
+        },
+        "checked": {
+          "type": "object",
+          "required": [
+            "date",
+            "result"
+          ],
+          "properties": {
+            "date": {
+              "type": "string"
+            },
+            "result": {
+              "enum": [
+                "ok",
+                "failed",
+                "unreachable"
+              ]
+            },
+            "manifestSha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "checks": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "note": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "stale": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "bodies": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "machine": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "reviewed": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "human": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "added": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "listed",
+            "flagged",
+            "withdrawn"
+          ]
+        },
+        "by": {
+          "enum": [
+            "publisher",
+            "third-party"
+          ]
+        },
+        "translation": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "machine",
+                "reviewed",
+                "human",
+                "mixed"
+              ]
+            },
+            "evidence": {
+              "enum": [
+                "claimed",
+                "recorded"
+              ]
+            }
+          }
+        },
+        "maintainers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "github"
+            ],
+            "properties": {
+              "github": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$"
+              },
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "publisher",
+                  "delegate"
+                ]
+              },
+              "since": {
+                "type": "string"
+              },
+              "delegation": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "flag": {
+          "type": "object",
+          "required": [
+            "since",
+            "reason"
+          ],
+          "properties": {
+            "since": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        },
+        "of": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "collections"
+      ]
+    },
+    {
+      "required": [
+        "languages",
+        "publishers"
+      ]
+    }
+  ]
+}

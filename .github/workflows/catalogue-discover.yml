@@ -1,0 +1,46 @@
+name: catalogue-discover
+
+# Reads every manifest the registered publishers name, checks what is behind
+# it, and proposes the result (catalogue/state/) as a pull request. It runs on
+# a schedule and by hand. It never changes a publisher file.
+#
+# Not yet enabled for the schedule: uncomment `schedule` when the first
+# publisher is registered.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Read and check the publishers' manifests
+        run: python tools/build_catalogue.py discover
+      - name: Propose the new state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- catalogue/state; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          branch="catalogue-state/$(date -u +%Y-%m-%d)"
+          git config user.name "gilyon-catalogue"
+          git config user.email "gilyon-catalogue@users.noreply.github.com"
+          git switch -c "$branch"
+          git add catalogue/state
+          git commit -m "Catalogue: state of $(date -u +%Y-%m-%d)"
+          git push -u origin "$branch"
+          gh pr create --title "Catalogue: state of $(date -u +%Y-%m-%d)" \
+            --body "Written by tools/build_catalogue.py discover. Review the flagged entries before merging."

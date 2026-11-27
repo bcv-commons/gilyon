@@ -1,0 +1,49 @@
+{
+  "gilyon": "0.1",
+  "conformsTo": 1,
+  "id": "urn:uuid:5d0c7c0e-52a4-5b53-9a1e-0c2b6f1a7d01",
+  "bodies": "separate",
+  "meta": {
+    "title": "Notes on Genesis 1:1-2",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification."
+  },
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    }
+  },
+  "annotations": [
+    {
+      "id": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "motivation": "commenting",
+      "category": [
+        "gilyon:note/study"
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Words",
+          "ref": "GEN 1:1",
+          "words": [
+            "o010010010021",
+            "o010010010031"
+          ],
+          "check": {
+            "o010010010021": "בָּרָ֣א",
+            "o010010010031": "אֱלֹהִ֑ים"
+          },
+          "lexemes": {
+            "o010010010021": "hbo:1254",
+            "o010010010031": "hbo:0430"
+          }
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      }
+    }
+  ]
+}

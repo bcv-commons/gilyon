@@ -1,0 +1,58 @@
+{
+  "gilyon": "0.1",
+  "conformsTo": 1,
+  "id": "urn:uuid:efe62b4e-d5c3-5fd1-bdb3-15e51bb6d13d",
+  "meta": {
+    "title": "INVALID: a position in a translation (spec §1.4)",
+    "language": "en",
+    "license": "CC-BY-4.0"
+  },
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    },
+    "eng": {
+      "role": "translation",
+      "edition": "eng_example",
+      "language": "en",
+      "versification": "org"
+    }
+  },
+  "annotations": [
+    {
+      "id": "urn:uuid:76f3691f-2131-5923-9334-705823bf23bb",
+      "motivation": "commenting",
+      "category": [
+        "gilyon:note/translation"
+      ],
+      "body": [
+        {
+          "value": "The two Hebrew words rhyme (tohu wa-bohu)."
+        }
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Point",
+          "ref": "GEN 1:2",
+          "after": "o010010020042",
+          "before": "o010010020051"
+        },
+        "anchoring": {
+          "status": "authored"
+        },
+        "origin": {
+          "text": "eng",
+          "selector": {
+            "type": "Tokens",
+            "ref": "GEN 1:2",
+            "start": 7,
+            "end": 7
+          }
+        }
+      }
+    }
+  ]
+}

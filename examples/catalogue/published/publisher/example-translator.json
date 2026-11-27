@@ -1,0 +1,94 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/catalogue/published/publisher/example-translator.json",
+  "slice": {
+    "by": "publisher",
+    "value": "Example Translators"
+  },
+  "modified": "2026-11-27",
+  "collections": [
+    {
+      "manifest": "../../../collection/manifest.json",
+      "id": "https://gilyon.org/0.1/examples/collection",
+      "title": {
+        "en": "Example collection with bodies in two languages",
+        "sv": "Exempelsamling med nottext på två språk"
+      },
+      "license": "CC-BY-4.0",
+      "attribution": "The bcv-commons team. Written for this specification.",
+      "sourceLanguage": "en",
+      "languages": [
+        "en",
+        "sv"
+      ],
+      "books": [
+        "GEN",
+        "JHN"
+      ],
+      "annotations": 6,
+      "level": 2,
+      "hosting": "publisher",
+      "checked": {
+        "date": "2026-11-27",
+        "result": "ok",
+        "manifestSha256": "a5f663a0b7ef32faed1466a4a2e41e01544e847edf92ec76113c197d5dc93501",
+        "checks": [
+          "reachable",
+          "checksums",
+          "valid"
+        ],
+        "bodies": {
+          "source": 6,
+          "machine": 6
+        }
+      },
+      "status": "listed",
+      "added": "2026-11-27",
+      "publisher": {
+        "name": "Example Publisher",
+        "type": "Organization",
+        "id": "https://publisher.example/"
+      },
+      "translations": [
+        {
+          "manifest": "../../../translation-elsewhere/manifest.json",
+          "id": "https://gilyon.org/0.1/examples/translation-elsewhere",
+          "title": {
+            "de": "Beispiel: deutsche Übersetzung einer Sammlung, getrennt veröffentlicht",
+            "en": "Example: a German translation of a collection, published separately"
+          },
+          "license": "CC-BY-4.0",
+          "attribution": "German translation: the bcv-commons team. Original notes: the bcv-commons team.",
+          "languages": [
+            "de"
+          ],
+          "translation": {
+            "status": "machine",
+            "evidence": "claimed"
+          },
+          "checked": {
+            "date": "2026-11-27",
+            "result": "ok",
+            "manifestSha256": "5dfc18154766488963a10b08eb2f8749def66307eba8bca734e03eb506f0994a",
+            "checks": [
+              "reachable",
+              "checksums",
+              "valid",
+              "translation"
+            ],
+            "bodies": {
+              "machine": 4
+            }
+          },
+          "status": "listed",
+          "added": "2026-11-27",
+          "publisher": {
+            "name": "Example Translators",
+            "type": "Organization"
+          },
+          "by": "third-party"
+        }
+      ]
+    }
+  ]
+}

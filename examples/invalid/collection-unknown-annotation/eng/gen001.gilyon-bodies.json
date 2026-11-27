@@ -1,0 +1,27 @@
+{
+  "gilyon": "0.1",
+  "id": "urn:uuid:5d0c7c0e-52a4-5b53-9a1e-0c2b6f1a7d02",
+  "of": "urn:uuid:5d0c7c0e-52a4-5b53-9a1e-0c2b6f1a7d01",
+  "meta": {
+    "language": "en",
+    "license": "CC-BY-4.0"
+  },
+  "entries": [
+    {
+      "annotation": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "body": [
+        {
+          "value": "A note."
+        }
+      ]
+    },
+    {
+      "annotation": "urn:uuid:00000000-0000-4000-8000-000000000000",
+      "body": [
+        {
+          "value": "A note on nothing."
+        }
+      ]
+    }
+  ]
+}

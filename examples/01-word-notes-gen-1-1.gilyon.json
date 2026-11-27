@@ -1,0 +1,155 @@
+{
+  "gilyon": "0.1",
+  "conformsTo": 1,
+  "id": "urn:uuid:1a67659e-14f3-5701-866c-3aa755cba778",
+  "meta": {
+    "title": "Notes on words, a span, a point and a lexeme (Genesis 1:1-2)",
+    "language": "en",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification."
+  },
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    }
+  },
+  "annotations": [
+    {
+      "id": "urn:uuid:655f0c61-8757-5873-bcb5-b102b7b6e66f",
+      "motivation": "commenting",
+      "category": [
+        "gilyon:note/study"
+      ],
+      "body": [
+        {
+          "value": "The verb is singular, although the word for God that follows it is plural in form."
+        }
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Words",
+          "ref": "GEN 1:1",
+          "words": [
+            "o010010010021",
+            "o010010010031"
+          ],
+          "check": {
+            "o010010010021": "בָּרָ֣א",
+            "o010010010031": "אֱלֹהִ֑ים"
+          },
+          "lexemes": {
+            "o010010010021": "hbo:1254",
+            "o010010010031": "hbo:0430"
+          }
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      }
+    },
+    {
+      "id": "urn:uuid:e50b3d99-6a80-561f-8981-f410774f000a",
+      "motivation": "highlighting",
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Words",
+          "ref": "GEN 1:1",
+          "words": [
+            "o010010010021"
+          ]
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      },
+      "presentation": {
+        "color": "#ffe08a"
+      }
+    },
+    {
+      "id": "urn:uuid:b962819f-00fd-5a6a-b602-58fb9ffc18b5",
+      "motivation": "classifying",
+      "category": [
+        "gilyon:figure/arrangement/merism"
+      ],
+      "body": [
+        {
+          "value": "Two extremes are named to mean everything that lies between them: all that exists."
+        }
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Range",
+          "ref": "GEN 1:1",
+          "first": "o010010010051",
+          "last": "o010010010072",
+          "check": {
+            "o010010010052": "שָּׁמַ֖יִם",
+            "o010010010072": "אָֽרֶץ"
+          }
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      }
+    },
+    {
+      "id": "urn:uuid:31155b51-21cc-56f6-9c28-0246e3995354",
+      "motivation": "commenting",
+      "category": [
+        "gilyon:note/translation"
+      ],
+      "body": [
+        {
+          "value": "The two Hebrew words rhyme (tohu wa-bohu). Few translations keep the sound."
+        }
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Point",
+          "ref": "GEN 1:2",
+          "after": "o010010020042",
+          "before": "o010010020051"
+        },
+        "anchoring": {
+          "status": "authored"
+        },
+        "fallback": {
+          "type": "Passage",
+          "ref": "GEN 1:2"
+        }
+      },
+      "presentation": {
+        "placement": "footnote"
+      }
+    },
+    {
+      "id": "urn:uuid:d42e12b0-a6ff-53f0-bacb-fb074bf3bd6e",
+      "motivation": "commenting",
+      "category": [
+        "gilyon:note/glossary"
+      ],
+      "body": [
+        {
+          "value": "Beginning; the first or best part of something. This note applies wherever the lexeme occurs."
+        }
+      ],
+      "target": {
+        "text": "heb",
+        "selector": {
+          "type": "Lexeme",
+          "lexeme": "hbo:7225"
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      }
+    }
+  ]
+}

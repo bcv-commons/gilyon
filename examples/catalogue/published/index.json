@@ -1,0 +1,65 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/catalogue/published/index.json",
+  "title": "Example catalogue",
+  "modified": "2026-11-27",
+  "counts": {
+    "collections": 1,
+    "translations": 1,
+    "publishers": 2,
+    "languages": 3
+  },
+  "collectionPath": "c/{key}.json",
+  "languages": {
+    "de": {
+      "path": "lang/deu.json",
+      "collections": 1,
+      "translations": 1
+    },
+    "en": {
+      "path": "lang/eng.json",
+      "collections": 1,
+      "translations": 0
+    },
+    "sv": {
+      "path": "lang/swe.json",
+      "collections": 1,
+      "translations": 0
+    }
+  },
+  "publishers": [
+    {
+      "name": "Example Publisher",
+      "path": "publisher/example-publisher.json",
+      "collections": 1,
+      "translations": 0,
+      "maintainers": [
+        {
+          "github": "example-publisher",
+          "name": "A. Publisher",
+          "role": "publisher",
+          "since": "2026-11-27"
+        }
+      ],
+      "status": "listed",
+      "id": "https://publisher.example/",
+      "added": "2026-11-27"
+    },
+    {
+      "name": "Example Translators",
+      "path": "publisher/example-translator.json",
+      "collections": 1,
+      "translations": 1,
+      "maintainers": [
+        {
+          "github": "example-translator",
+          "role": "delegate",
+          "since": "2026-11-27",
+          "delegation": "https://translator.example/delegation-statement"
+        }
+      ],
+      "status": "listed",
+      "added": "2026-11-27"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+name: catalogue-owner
+
+# Decides whether the author of a pull request may change the catalogue files
+# it touches (docs/catalogue.md). It runs without secrets and reads the
+# maintainers from the base branch, never from the proposed change.
+
+on:
+  pull_request:
+    paths:
+      - "catalogue/**"
+
+permissions:
+  contents: read
+
+jobs:
+  owner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Check who may change these files
+        env:
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only -z "$BASE"...HEAD -- catalogue/ > changed.txt
+          set +e
+          xargs -0 python tools/build_catalogue.py owner-check --author "$AUTHOR" --base "$BASE" < changed.txt
+          code=$?
+          set -e
+          if [ "$code" = "2" ]; then
+            echo "::notice::This change needs a catalogue admin. The check passes; an admin's review is required to merge."
+            exit 0
+          fi
+          exit "$code"

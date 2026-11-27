@@ -1,0 +1,19 @@
+Gilyon
+Copyright (c) 2026 The bcv-commons team
+
+This repository is under two licences.
+
+1. The specification, the schemas, the registries, the examples and the
+   documentation (spec/, schema/, registries/, examples/, docs/, README.md,
+   GOVERNANCE.md) are licensed under the Creative Commons Attribution 4.0
+   International licence (CC BY 4.0).
+   Full text: LICENSES/CC-BY-4.0.txt
+   https://creativecommons.org/licenses/by/4.0/
+
+   Credit line: "Gilyon, the bcv-commons team, https://gilyon.org/".
+
+2. The software (tools/) is licensed under the MIT licence.
+   Full text: LICENSES/MIT.txt
+
+The word identifiers used in the examples come from MACULA Hebrew and
+MACULA Greek (Clear Bible, Inc.), licensed under CC BY 4.0.

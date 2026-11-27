@@ -1,0 +1,24 @@
+{
+  "gilyon": "0.1",
+  "id": "urn:uuid:5d0c7c0e-52a4-5b53-9a1e-0c2b6f1a7d10",
+  "of": "https://gilyon.org/0.1/examples/collection",
+  "ofManifest": "../../collection/manifest.json",
+  "title": "INVALID: a translation of an annotation document that is not in the collection (spec §16.3)",
+  "license": "CC-BY-4.0",
+  "languages": {
+    "de": {
+      "dir": "deu"
+    }
+  },
+  "files": [
+    {
+      "id": "https://gilyon.org/0.1/examples/collection/exo001",
+      "bodies": {
+        "de": {
+          "path": "deu/exo001.gilyon-bodies.json",
+          "sha256": "09d582174c08a164c122bb56ca5c6292e97182c189adba5c84e973951e718762"
+        }
+      }
+    }
+  ]
+}

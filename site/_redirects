@@ -1,0 +1,5 @@
+/spec            /0.1/                       302
+/latest          /0.1/                       302
+/latest/*        /0.1/:splat                 302
+/schema.json     /0.1/schema.json            302
+/context.jsonld  /0.1/context.jsonld         302
