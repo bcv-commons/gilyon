@@ -1,0 +1,10 @@
+// Cloudflare Workers: serve the built site (_site/) as static files.
+// The site is built by tools/build_site.py; there is no Worker script.
+// "name" must be the name of the Worker in the Cloudflare dashboard.
+{
+  "name": "gilyon",
+  "compatibility_date": "2026-11-27",
+  "assets": {
+    "directory": "./_site"
+  }
+}

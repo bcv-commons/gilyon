@@ -116,7 +116,8 @@ It does not define a Bible text format, an alignment format or an API.
 | `https://gilyon.org/collections/index.json` | The catalogue's index; slices under `lang/`, `publisher/`, `c/` |
 
 The site is built from this repository with `tools/build_site.py`
-(`uv run --with markdown --with jsonschema tools/build_site.py`).
+(`uv run --with markdown --with jsonschema tools/build_site.py`). It is
+served by Cloudflare as static files; `wrangler.jsonc` names the built folder.
 
 ## Validate a document
 
