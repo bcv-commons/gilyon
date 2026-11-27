@@ -2,3 +2,4 @@
 # The last matching line decides. Catalogue admins own the folder; each publisher
 # file is owned by its maintainers and the admins.
 
+/catalogue/publishers/bcv-commons.json @larsgson

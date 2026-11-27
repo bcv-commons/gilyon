@@ -1,0 +1,36 @@
+{
+  "publisher": "bcv-commons",
+  "discovered": "2026-11-27",
+  "entries": [
+    {
+      "manifest": "https://gilyon.org/collections/swe_svk/manifest.json",
+      "id": "https://gilyon.org/collections/swe_svk",
+      "title": {
+        "en": "The Swedish Core Bible: anchors of the notes on Joshua",
+        "sv": "Svenska Kärnbibeln: ankare till noterna i Josua"
+      },
+      "license": "CC-BY-NC-ND-4.0",
+      "attribution": "Svenska Kärnbibeln (SKB), karnbibeln.se",
+      "languages": [],
+      "folders": {},
+      "books": [
+        "JOS"
+      ],
+      "annotations": 292,
+      "level": 1,
+      "hosting": "publisher",
+      "checked": {
+        "date": "2026-11-27",
+        "result": "ok",
+        "manifestSha256": "81362117af039340f4312421515440a3513cf4c4c44923fe08e55d725d7d73e8",
+        "checks": [
+          "reachable",
+          "checksums",
+          "valid"
+        ]
+      },
+      "status": "listed",
+      "added": "2026-11-27"
+    }
+  ]
+}

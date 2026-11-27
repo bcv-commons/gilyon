@@ -1,0 +1,266 @@
+{
+ "gilyon": "0.1",
+ "id": "https://gilyon.org/collections/swe_svk",
+ "title": {
+  "en": "The Swedish Core Bible: anchors of the notes on Joshua",
+  "sv": "Svenska Kärnbibeln: ankare till noterna i Josua"
+ },
+ "license": "CC-BY-NC-ND-4.0",
+ "attribution": "Svenska Kärnbibeln (SKB), karnbibeln.se",
+ "texts": {
+  "heb": {
+   "role": "base",
+   "edition": "WLCM",
+   "release": "26.04.13",
+   "revision": "47db250bd55d0d8577f2a94fba114ef16c35b23c"
+  },
+  "ref": {
+   "role": "reference",
+   "versification": "org"
+  }
+ },
+ "files": [
+  {
+   "path": "jos001.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos001.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 1",
+   "annotations": 28,
+   "sha256": "45eba04a76a5c5683fa3c52ee3325b5f3bafc018092c6036701a0e384d6a6927"
+  },
+  {
+   "path": "jos002.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos002.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 2",
+   "annotations": 26,
+   "sha256": "da018265c230fd323e958c6890341ee5defac942cd3ba35734b0eb386062bf42"
+  },
+  {
+   "path": "jos003.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos003.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 3",
+   "annotations": 10,
+   "sha256": "b2394f26cfa0b0b464d9819a320124159cf6d3197ca682fde7a50766604261db"
+  },
+  {
+   "path": "jos004.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos004.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 4",
+   "annotations": 6,
+   "sha256": "2e60b90e6de9f8e7b029df3c5c6d15808a7bc6ef788a1750f1f2f70b29b12d81"
+  },
+  {
+   "path": "jos005.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos005.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 5",
+   "annotations": 16,
+   "sha256": "672e5fbc6e062f276820de5003377506dcad3ed0c33421a18f0f74b023e55215"
+  },
+  {
+   "path": "jos006.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos006.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 6",
+   "annotations": 8,
+   "sha256": "dd27ce580729c65ca700a7bdbb5536784f9ebc45280094a703b2df962ad633e8"
+  },
+  {
+   "path": "jos007.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos007.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 7",
+   "annotations": 14,
+   "sha256": "fab7050707abc0189ab341aa03024db6fa1ec4f5d8a8a30f7a04fca0c5d5ffdc"
+  },
+  {
+   "path": "jos008.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos008.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 8",
+   "annotations": 16,
+   "sha256": "876b2a6be423f15f98633f557a9dc72cef4f8e403da0d14bffc193dd706480e0"
+  },
+  {
+   "path": "jos009.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos009.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 9",
+   "annotations": 19,
+   "sha256": "b43fe157fe821ae0eee0a07dbc9b2c2aa6fd0728029c01441f0059d1ea5a60a5"
+  },
+  {
+   "path": "jos010.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos010.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 10",
+   "annotations": 31,
+   "sha256": "92a3bb554002d61389164394a8998c0515210394fbeb12c0f6cec318926f22b1"
+  },
+  {
+   "path": "jos011.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos011.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 11",
+   "annotations": 27,
+   "sha256": "072d8b6ed158d4e7bc1aac3f8ba2da55094b37ab34945a71a9c0085b1ad65ab2"
+  },
+  {
+   "path": "jos012.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos012.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 12",
+   "annotations": 14,
+   "sha256": "7fbb1eef4989e20f5b313626ce46c6868e1b4c38d170b602fce1a8535d961929"
+  },
+  {
+   "path": "jos013.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos013.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 13",
+   "annotations": 4,
+   "sha256": "ec1434846f88ae81f340c0729c16101485d8e2ddf6415c35df5e5d71b5b179e2"
+  },
+  {
+   "path": "jos014.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos014.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 14",
+   "annotations": 3,
+   "sha256": "d2ffbbdd38d53827a650835b9760621025f8e069a38bd87364efad52125baf3a"
+  },
+  {
+   "path": "jos015.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos015.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 15",
+   "annotations": 12,
+   "sha256": "aab9735c0cdb7687e2836ec7d685733e2670b2cc06bf5b3ee8af3bbce9c28977"
+  },
+  {
+   "path": "jos016.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos016.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 16",
+   "annotations": 1,
+   "sha256": "bd7f2ab7bb5b1d7e507dd8282e191bf9e3388bd7c3ebe036cc7852b13e8c325c"
+  },
+  {
+   "path": "jos017.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos017.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 17",
+   "annotations": 7,
+   "sha256": "1f1e311a9df31e511d987b511dba2f3cc87e64a0ce0b195915d7928fbae2596b"
+  },
+  {
+   "path": "jos018.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos018.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 18",
+   "annotations": 6,
+   "sha256": "e9ca926ad2655cc26cdea4e8bdbf6466add5a61f2f90a3287e1a8be88eace3da"
+  },
+  {
+   "path": "jos019.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos019.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 19",
+   "annotations": 17,
+   "sha256": "bef4f5d19aabe095e83cde7aa8bbb1bfdd064cd9ca5ff390be78b0ebe6f7d2e2"
+  },
+  {
+   "path": "jos020.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos020.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 20",
+   "annotations": 7,
+   "sha256": "145762f7c2e910aabc5a0e8c5c0cb993e2fdd2e9d6566f21e2f703a4a820a6d1"
+  },
+  {
+   "path": "jos021.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos021.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 21",
+   "annotations": 2,
+   "sha256": "5506f3762132bf4760c7fc6320dadbf57d6cdb83a2dd63ae53b9c5b9f3fc286d"
+  },
+  {
+   "path": "jos022.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos022.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 22",
+   "annotations": 3,
+   "sha256": "9c1516d1d97e9088bb6b30df7a9c883c9432e443b520f0f8fe912f616ba749f4"
+  },
+  {
+   "path": "jos023.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos023.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 23",
+   "annotations": 7,
+   "sha256": "c88720cb487f65e904f00c8f277b4d7b9ab6b3d3e94ecbafb88da5314c38af09"
+  },
+  {
+   "path": "jos024.gilyon.json",
+   "id": "https://gilyon.org/collections/swe_svk/jos024.gilyon.json",
+   "books": [
+    "JOS"
+   ],
+   "ref": "JOS 24",
+   "annotations": 8,
+   "sha256": "8c4d6e7efbc6aba793601f58f3d3b537209cf5274a25638f1fdc539f2409f7ec"
+  }
+ ],
+ "created": "2026-11-27T00:00:00Z",
+ "description": "Anchors only. Each annotation gives the place of one inline note of Svenska Kärnbibeln (the bracketed expansions in its text) among the Hebrew words, computed by software from a word alignment of the Swedish text and not reviewed. The wording of the notes, which is in Swedish, and the Scripture references they contain are not part of this collection; they are to be added when the rights holder has agreed. `source.noteId` names the note: book, chapter, verse and the note's number in the verse."
+}

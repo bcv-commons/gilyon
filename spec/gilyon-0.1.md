@@ -925,7 +925,9 @@ A body that was written or translated by software MUST have a `creator` of
 4. **Bodies by language.** The bodies MAY be kept apart from the annotations,
    in one body document per annotation document and language, each language
    in a folder of its own (§16.2). A collection in more than one language
-   SHOULD be published in this form. It requires a manifest.
+   SHOULD be published in this form. It requires a manifest. A collection in
+   this form MAY be published as anchors only, without any wording (§16.2
+   rule 5).
 5. **Scripture Burrito.** A Gilyon collection MAY be an ingredient of a Scripture
    Burrito. A dedicated flavor is proposed in `docs/open-issues.md` §9.
 
@@ -1054,7 +1056,12 @@ Rules:
    has `translationOf`, its own or the document's.
 5. An annotation document with separate bodies MUST be listed in a manifest
    together with its body documents (§16.1). A body document is not usable
-   without its annotation document.
+   without its annotation document. A manifest MAY declare no `languages`
+   and list no body documents: the collection is then published as **anchors
+   only**, and its wording is published later, by another party, or not at
+   all. Rule 3 does not apply to it. A Consumer MUST NOT treat the missing
+   wording as an error; it MAY show such an annotation as a mark at its
+   target, or leave it out.
 6. A Consumer joins the two by annotation `id`. Asked for a language, it uses
    the body in that language; where there is none, or where it will not show
    a stale or unreviewed one, it uses the body in the source language. The

@@ -1,0 +1,327 @@
+{
+ "gilyon": "0.1",
+ "conformsTo": 1,
+ "id": "https://gilyon.org/collections/swe_svk/jos020.gilyon.json",
+ "bodies": "separate",
+ "meta": {
+  "title": {
+   "en": "The Swedish Core Bible: anchors of the notes on JOS 20",
+   "sv": "Svenska Kärnbibeln: ankare till noterna i JOS 20"
+  },
+  "description": "Anchors only. Each annotation gives the place of one inline note of Svenska Kärnbibeln (the bracketed expansions in its text) among the Hebrew words, computed by software from a word alignment of the Swedish text and not reviewed. The wording of the notes, which is in Swedish, and the Scripture references they contain are not part of this collection; they are to be added when the rights holder has agreed. `source.noteId` names the note: book, chapter, verse and the note's number in the verse.",
+  "license": "CC-BY-NC-ND-4.0",
+  "attribution": "Svenska Kärnbibeln (SKB), karnbibeln.se",
+  "status": "draft",
+  "source": {
+   "title": "Svenska Kärnbibeln",
+   "url": "https://karnbibeln.se"
+  },
+  "generator": {
+   "name": "bcv-lexeme-anchor converter (bcv-commons)",
+   "type": "Software",
+   "version": "0.1"
+  },
+  "created": "2026-11-27T00:00:00Z"
+ },
+ "texts": {
+  "heb": {
+   "role": "base",
+   "edition": "WLCM",
+   "release": "26.04.13",
+   "revision": "47db250bd55d0d8577f2a94fba114ef16c35b23c"
+  },
+  "ref": {
+   "role": "reference",
+   "versification": "org"
+  }
+ },
+ "annotations": [
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.2.1",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:2",
+     "after": "o060200020151",
+     "lexemes": {
+      "o060200020151": "hbo:4872"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "medium",
+     "detail": "MEDIUM",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 9,
+      "kind": "END_OF_VERSE",
+      "nothing_follows": true,
+      "true_end": true,
+      "status": "MEDIUM"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:2"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:2#add_1"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.4.1",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:4",
+     "after": "o060200040102",
+     "before": "o060200040112",
+     "lexemes": {
+      "o060200040102": "hbo:1696",
+      "o060200040112": "hbo:0241"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "medium",
+     "detail": "MEDIUM",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 7,
+      "after_lex": 8,
+      "status": "MEDIUM"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:4"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:4#add_1"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.7.1",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:7",
+     "after": "o060200070012",
+     "before": "o060200070031",
+     "lexemes": {
+      "o060200070012": "hbo:6942",
+      "o060200070031": "hbo:6943"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "high",
+     "detail": "HIGH",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 0,
+      "after_lex": 1,
+      "status": "HIGH"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:7"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:7#add_1"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.8.1",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:8",
+     "after": "o060200080013",
+     "before": "o060200080022",
+     "lexemes": {
+      "o060200080013": "hbo:5676",
+      "o060200080022": "hbo:3383"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "high",
+     "detail": "HIGH",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 0,
+      "after_lex": 1,
+      "status": "HIGH"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:8"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:8#add_1"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.8.2",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:8",
+     "after": "o060200080051",
+     "before": "o060200080071",
+     "lexemes": {
+      "o060200080051": "hbo:5414",
+      "o060200080071": "hbo:1221a"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "medium",
+     "detail": "MEDIUM",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 4,
+      "after_lex": 5,
+      "status": "MEDIUM"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:8"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:8#add_2"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.9.1",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:9",
+     "after": "o060200090011",
+     "before": "o060200090021",
+     "lexemes": {
+      "o060200090011": "hbo:0428",
+      "o060200090021": "hbo:1961"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "high",
+     "detail": "HIGH",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 0,
+      "after_lex": 1,
+      "status": "HIGH"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:9"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:9#add_1"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  },
+  {
+   "id": "https://gilyon.org/collections/swe_svk/a/JOS.20.9.2",
+   "motivation": "commenting",
+   "category": [
+    "gilyon:note/study"
+   ],
+   "target": {
+    "text": "heb",
+    "selector": {
+     "type": "Point",
+     "ref": "JOS 20:9",
+     "after": "o060200090252",
+     "lexemes": {
+      "o060200090252": "hbo:5712"
+     }
+    },
+    "anchoring": {
+     "status": "derived",
+     "method": "bcv-lexeme-anchor/1",
+     "tier": "high",
+     "detail": "HIGH",
+     "x-bcv-lexeme-anchor": {
+      "before_lex": 21,
+      "kind": "END_OF_VERSE",
+      "nothing_follows": true,
+      "true_end": true,
+      "status": "HIGH"
+     }
+    },
+    "fallback": {
+     "type": "Passage",
+     "ref": "JOS 20:9"
+    }
+   },
+   "source": {
+    "noteId": "JOS 20:9#add_2"
+   },
+   "presentation": {
+    "placement": "inline"
+   }
+  }
+ ]
+}

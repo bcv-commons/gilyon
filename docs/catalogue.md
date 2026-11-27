@@ -3,7 +3,8 @@
 How collections and translations get into the Gilyon catalogue, how the
 catalogue stays small enough to use, and what it verifies. The published
 format is in the specification (§16.4). The process on this page is a
-proposal; no publisher is registered yet.
+proposal. One publisher is registered so far: the bcv-commons team itself,
+with one collection hosted on this site.
 
 ## The idea
 

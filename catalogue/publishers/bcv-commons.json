@@ -1,0 +1,14 @@
+{
+  "name": "bcv-commons",
+  "id": "https://github.com/bcv-commons",
+  "added": "2026-11-27",
+  "maintainers": [
+    { "github": "larsgson", "role": "publisher", "since": "2026-11-27" }
+  ],
+  "sources": [
+    { "type": "manifests",
+      "manifests": [
+        "https://gilyon.org/collections/swe_svk/manifest.json"
+      ] }
+  ]
+}

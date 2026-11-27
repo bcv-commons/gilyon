@@ -235,6 +235,9 @@ publishers' manifests. The process is proposed in `docs/catalogue.md`. Open:
 - The checks have run against local test servers only. The check that word
   identifiers exist in the pinned release is not implemented.
 - The cross-origin check covers the manifest, not every file.
+- A collection published as anchors only (§16.2 rule 5) declares no
+  language, so it appears in no language slice and its source language is
+  stated only in its description.
 - A collection whose manifest was never reachable has no entry, since its
   identifier is unknown; it appears only in the publisher's state file.
 - Who the catalogue admins are, and proof that a delegate acts for a

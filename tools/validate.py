@@ -450,8 +450,7 @@ def validate_manifest(path):
             check_language_files(man, entry, doc, Path(path).parent, where, errors)
         elif "bodies" in entry:
             errors.append(f"{where}: bodies listed, but the manifest declares no languages")
-        elif doc.get("bodies") == "separate":
-            errors.append(f"{where}: {entry['path']} declares bodies 'separate', but the manifest lists none")
+        # bodies 'separate' and no languages: a collection of anchors only (spec §16.2 rule 5)
     if "languages" in man and man["sourceLanguage"] not in man["languages"]:
         errors.append("sourceLanguage is not declared in languages")
     check_dirs(man, errors)

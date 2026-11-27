@@ -15,5 +15,9 @@ This repository is under two licences.
 2. The software (tools/) is licensed under the MIT licence.
    Full text: LICENSES/MIT.txt
 
+3. The collections hosted in collections/ are not covered by the two
+   licences above. Each states its own licence and credit line in its
+   manifest.json (see collections/README.md).
+
 The word identifiers used in the examples come from MACULA Hebrew and
 MACULA Greek (Clear Bible, Inc.), licensed under CC BY 4.0.

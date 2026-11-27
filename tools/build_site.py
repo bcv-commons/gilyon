@@ -23,6 +23,7 @@ place where those addresses are decided:
   /collections/               site/collections/index.md
   /collections/index.json     the catalogue: an index of its slices, built from
   /collections/lang/..., /publisher/..., /c/...    catalogue/ by tools/build_catalogue.py
+  /collections/<name>/...     collections/<name>/... (collections hosted on this site)
   /LICENSE.txt, /LICENSES/... LICENSE, LICENSES/
 
 The build fails if a schema's `$id` differs from the address it is served at,
@@ -130,6 +131,9 @@ def main():
     for p in sorted((ROOT / "examples").rglob("*.json")):
         rel = p.relative_to(ROOT).as_posix()
         files[rel] = f"/{VERSION}/{rel}"
+    for p in sorted((ROOT / "collections").rglob("*.json")):      # collections hosted here
+        rel = p.relative_to(ROOT).as_posix()
+        files[rel] = f"/{rel}"
     for p in sorted((ROOT / "LICENSES").glob("*")):
         files[f"LICENSES/{p.name}"] = f"/LICENSES/{p.name}"
 
@@ -144,7 +148,8 @@ def main():
 
     # where a link to a repository file leads on the site: a page wins over the raw file
     built = {"site/collections/index.json": "/collections/index.json"}   # made by build_catalogue
-    address_of = {**files, **built, **pages}
+    linkable = {"site/" + src: address for src, address in files.items() if src.startswith("collections/")}
+    address_of = {**files, **built, **linkable, **pages}
 
     def rewrite(src):
         base = posixpath.dirname(src)
