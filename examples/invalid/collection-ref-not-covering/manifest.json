@@ -1,0 +1,46 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/invalid/collection-ref-not-covering",
+  "title": "Example collection split into one part per book",
+  "license": "CC-BY-4.0",
+  "attribution": "The bcv-commons team. Written for this specification.",
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    },
+    "grc": {
+      "role": "base",
+      "edition": "N1904",
+      "release": "24.06.17"
+    }
+  },
+  "created": "2026-11-27T00:00:00Z",
+  "sourceLanguage": "en",
+  "languages": {
+    "en": {
+      "dir": "eng"
+    }
+  },
+  "parts": [
+    {
+      "path": "GEN/manifest.json",
+      "books": [
+        "GEN"
+      ],
+      "files": 1,
+      "annotations": 5,
+      "sha256": "0780af36f5354afd67839b11ff0d36fba33f9bcc01797073d2918a04d244410b"
+    },
+    {
+      "path": "JHN/manifest.json",
+      "books": [
+        "JHN"
+      ],
+      "files": 1,
+      "annotations": 1,
+      "sha256": "c903b42d834f982f402f510947a2becc4cc122d90c43fc4bbc6dd8fa883b999c"
+    }
+  ]
+}

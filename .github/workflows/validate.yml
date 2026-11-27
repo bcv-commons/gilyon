@@ -19,7 +19,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Valid examples validate
-        run: python tools/validate.py examples/*.gilyon.json examples/catalogue/published/index.json collections/*/manifest.json
+        run: python tools/validate.py examples/*.gilyon.json examples/catalogue/published/index.json examples/collection-parts/manifest.json collections/*/manifest.json
 
       - name: Invalid examples fail
         run: |

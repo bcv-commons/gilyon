@@ -1,0 +1,46 @@
+{
+  "gilyon": "0.1",
+  "id": "https://gilyon.org/0.1/examples/collection-parts",
+  "title": "Example collection split into one part per book",
+  "license": "CC-BY-4.0",
+  "attribution": "The bcv-commons team. Written for this specification.",
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    },
+    "grc": {
+      "role": "base",
+      "edition": "N1904",
+      "release": "24.06.17"
+    }
+  },
+  "created": "2026-11-27T00:00:00Z",
+  "sourceLanguage": "en",
+  "languages": {
+    "en": {
+      "dir": "eng"
+    }
+  },
+  "parts": [
+    {
+      "path": "GEN/manifest.json",
+      "books": [
+        "GEN"
+      ],
+      "files": 1,
+      "annotations": 5,
+      "sha256": "3ab4829078454b59fa9dfa4361309a2cdfcb60dfc806e3ac032a76e150bdfa82"
+    },
+    {
+      "path": "JHN/manifest.json",
+      "books": [
+        "JHN"
+      ],
+      "files": 1,
+      "annotations": 1,
+      "sha256": "4c17b6d0656a21f5c25e624939c30cb5328d28677381c27f516b174d824be56a"
+    }
+  ]
+}

@@ -314,16 +314,22 @@ A Consumer (§2.3):
    present a `derived` anchor as confirmed.
 7. **Finds collections through a catalogue** by fetching its index and the
    slice of the language it shows (§16.4), not the whole catalogue.
-8. **Joins bodies to annotations** when a document declares
+8. **Fetches only what it shows.** For one chapter of a translation it
+   works out which chapters of the base text that chapter draws on (from the
+   alignment and the verse numbering; not always the same chapter, and not
+   always an adjacent one), reads the collection's manifest and, where the
+   manifest is in parts, the part for that book, and fetches the files whose
+   `ref` overlaps those chapters (§16.5).
+9. **Joins bodies to annotations** when a document declares
    `"bodies": "separate"`: it reads the body document of the language it
    shows from the manifest and matches entries to annotations by `id`
    (§16.2). Where that language has no body, it uses the source language. It
    does not present a `machine` translation as reviewed. When the bodies
    come from a translation manifest of another party (§16.3), it lets the
    user see that.
-9. **Sanitises bodies** before display and does not run scripts or fetch
+10. **Sanitises bodies** before display and does not run scripts or fetch
    remote resources from them without the user's consent (§19).
-10. **Respects licences per annotation**, and does not aggregate or publish
+11. **Respects licences per annotation**, and does not aggregate or publish
    `LicenseRef-private` documents (§15.1).
 
 ### Showing annotations in a translation

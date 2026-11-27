@@ -1,0 +1,25 @@
+{
+  "gilyon": "0.1",
+  "partOf": "https://gilyon.org/0.1/examples/invalid/collection-ref-not-covering",
+  "partOfManifest": "../manifest.json",
+  "files": [
+    {
+      "path": "gen001.gilyon.json",
+      "id": "https://gilyon.org/0.1/examples/invalid/collection-ref-not-covering/gen001",
+      "books": [
+        "GEN"
+      ],
+      "ref": "GEN 2",
+      "annotations": 5,
+      "sha256": "fec24a52e47f8571b24e931e65bc817e7303d375e9ec407dc3628d70bccfe1f3",
+      "bodies": {
+        "en": {
+          "path": "eng/gen001.gilyon-bodies.json",
+          "id": "https://gilyon.org/0.1/examples/invalid/collection-ref-not-covering/eng/gen001",
+          "entries": 4,
+          "sha256": "992c94b8f59947af0bd2347f75ef572ba5ae38966f3ddca3f4514ba345564306"
+        }
+      }
+    }
+  ]
+}

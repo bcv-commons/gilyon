@@ -251,7 +251,32 @@ publishers' manifests. The process is proposed in `docs/catalogue.md`. Open:
   was written against. Stale wording is detected per body; a removed
   annotation is only noticed as an entry that matches nothing.
 
-## 22. Not yet verified
+## 22. Reading part of a collection
+
+Added to the draft: a manifest in parts, one part per book or group of books
+(§16.1), and rules for placing annotations in chapter files and for finding
+the files a passage needs (§16.5). Open:
+
+- No application has been built on these rules. The claim that an
+  application following them shows the same annotations as one that loads
+  everything is by argument, not by test.
+- The validator checks that a file's `ref` contains its targets. It does not
+  check that an annotation sits in the file of the chapter where it begins,
+  nor that long annotations are kept apart.
+- A structure whose units lie in several chapters is fetched whole with the
+  chapter where it begins; whether its units should be reachable one at a
+  time has not been considered.
+- A translation manifest (§16.3) cannot be split into parts yet, so the
+  translation of a whole-Bible collection still has one large manifest.
+- Parts are one level deep. Whether a part per book is small enough for the
+  longest books in many languages has not been measured.
+- Body documents follow the files of the annotation documents. A long
+  comment on a chapter is fetched with every other note of that chapter.
+- Collection files are served to be revalidated on every use. Since the
+  manifest states each file's checksum, they could be cached for long
+  periods; no rule says so.
+
+## 23. Not yet verified
 
 - The status of the USFM Scripture Referencing Standard: its file says 1.0,
   its roadmap says "In Discussion".

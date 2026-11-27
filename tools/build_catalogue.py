@@ -213,9 +213,9 @@ class Mirror:
 def body_counts(man, base):
     counts = {"source": 0, "machine": 0, "reviewed": 0, "human": 0}
     source = man.get("sourceLanguage")
-    for entry in man["files"]:
+    for entry, fbase in V.all_files(man, base):
         for tag, b in entry.get("bodies", {}).items():
-            f = V.locate(base, b["path"])
+            f = V.locate(fbase, b["path"])
             if f is None or not f.is_file():
                 continue
             try:
@@ -263,7 +263,8 @@ def describe(ref, hosting, d, date, previous, mirror):
     langs = man.get("languages", {})
     entry["languages"] = sorted(langs)
     entry["folders"] = {t: v["dir"] for t, v in sorted(langs.items())}
-    files = [e for e in man.get("files", []) if isinstance(e, dict)]
+    listed = [(e, b) for e, b in V.all_files(man, f.parent) if isinstance(e, dict)] if isinstance(man, dict) else []
+    files = [e for e, _ in listed]
     if "of" in man:
         status = {v.get("translation", {}).get("status") for v in langs.values()} - {None}
         if status:
@@ -272,8 +273,8 @@ def describe(ref, hosting, d, date, previous, mirror):
         entry["books"] = sorted({b for e in files for b in e.get("books", [])})
         entry["annotations"] = sum(e.get("annotations", 0) for e in files)
         levels = []
-        for e in files:
-            df = V.locate(f.parent, e["path"]) if "path" in e else None
+        for e, fbase in listed:
+            df = V.locate(fbase, e["path"]) if "path" in e else None
             if df is not None and df.is_file():
                 try:
                     levels.append(json.loads(df.read_text(encoding="utf-8")).get("conformsTo", 0))

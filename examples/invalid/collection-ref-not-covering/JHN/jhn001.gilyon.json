@@ -1,0 +1,138 @@
+{
+  "gilyon": "0.1",
+  "conformsTo": 2,
+  "id": "https://gilyon.org/0.1/examples/invalid/collection-ref-not-covering/jhn001",
+  "bodies": "separate",
+  "meta": {
+    "title": "A structure in John 1:1",
+    "license": "CC-BY-4.0",
+    "attribution": "The bcv-commons team. Written for this specification."
+  },
+  "texts": {
+    "heb": {
+      "role": "base",
+      "edition": "WLCM",
+      "release": "26.04.13"
+    },
+    "grc": {
+      "role": "base",
+      "edition": "N1904",
+      "release": "24.06.17"
+    }
+  },
+  "annotations": [
+    {
+      "id": "urn:uuid:273e5570-fd03-5555-b57e-1a69cf12a29f",
+      "motivation": "classifying",
+      "category": [
+        "gilyon:structure/parallelism"
+      ],
+      "target": {
+        "text": "grc",
+        "selector": {
+          "type": "Range",
+          "ref": "JHN 1:1",
+          "first": "n43001001001",
+          "last": "n43001001017"
+        },
+        "anchoring": {
+          "status": "authored"
+        }
+      },
+      "structure": {
+        "notation": "A-B-C",
+        "units": [
+          {
+            "id": "A",
+            "label": "A",
+            "level": 0,
+            "selector": {
+              "type": "Range",
+              "first": "n43001001001",
+              "last": "n43001001005"
+            },
+            "key": [
+              {
+                "type": "Words",
+                "words": [
+                  "n43001001003",
+                  "n43001001005"
+                ],
+                "check": {
+                  "n43001001003": "ἦν",
+                  "n43001001005": "Λόγος"
+                }
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "label": "B",
+            "level": 0,
+            "selector": {
+              "type": "Range",
+              "first": "n43001001006",
+              "last": "n43001001012"
+            },
+            "key": [
+              {
+                "type": "Words",
+                "words": [
+                  "n43001001008",
+                  "n43001001009",
+                  "n43001001012"
+                ],
+                "check": {
+                  "n43001001008": "Λόγος",
+                  "n43001001009": "ἦν",
+                  "n43001001012": "Θεόν"
+                }
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "label": "C",
+            "level": 0,
+            "selector": {
+              "type": "Range",
+              "first": "n43001001013",
+              "last": "n43001001017"
+            },
+            "key": [
+              {
+                "type": "Words",
+                "words": [
+                  "n43001001014",
+                  "n43001001015",
+                  "n43001001017"
+                ],
+                "check": {
+                  "n43001001014": "Θεὸς",
+                  "n43001001015": "ἦν",
+                  "n43001001017": "Λόγος"
+                }
+              }
+            ]
+          }
+        ],
+        "relations": [
+          {
+            "type": "corresponds",
+            "units": [
+              "A",
+              "B"
+            ]
+          },
+          {
+            "type": "corresponds",
+            "units": [
+              "B",
+              "C"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

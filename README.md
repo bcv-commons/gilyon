@@ -95,7 +95,7 @@ It does not define a Bible text format, an alignment format or an API.
 | `spec/` | The specification. |
 | `schema/` | JSON Schema 2020-12 for an annotation document, a body document, a manifest and a catalogue. |
 | `registries/` | Base texts, versifications, categories, entity authorities, anchoring methods. |
-| `examples/` | Documents that validate, a collection in two languages (`collection/`), a translation of it published separately (`translation-elsewhere/`), a catalogue that lists both (`catalogue/`, published form in `catalogue/published/`), and in `invalid/` cases that must fail. They are the test suite. |
+| `examples/` | Documents that validate, a collection in two languages (`collection/`), the same collection with its manifest in one part per book (`collection-parts/`), a translation of it published separately (`translation-elsewhere/`), a catalogue that lists both (`catalogue/`, published form in `catalogue/published/`), and in `invalid/` cases that must fail. They are the test suite. |
 | `collections/` | Collections hosted on `gilyon.org`, each under its own licence. So far one: anchors only, for the notes of a Swedish study Bible on Joshua. |
 | `catalogue/` | The catalogue's source: one file per registered publisher, and the state read from their manifests. |
 | `context/` | JSON-LD context (draft). |

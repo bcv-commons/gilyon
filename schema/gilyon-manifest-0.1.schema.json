@@ -1,14 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://gilyon.org/0.1/manifest.schema.json",
-  "title": "Gilyon 0.1 — manifest of a collection (spec §16.1) or of a translation of one (spec §16.3)",
+  "title": "Gilyon 0.1 — manifest of a collection (spec §16.1), of one part of a collection (§16.1, Parts) or of a translation of one (§16.3)",
   "description": "Structural validation only. That the listed files exist, match their hashes and agree with the manifest is checked by tools/validate.py.",
   "type": "object",
   "required": [
-    "gilyon",
-    "id",
-    "license",
-    "files"
+    "gilyon"
   ],
   "properties": {
     "gilyon": {
@@ -73,7 +70,20 @@
             "type": "string"
           },
           "ref": {
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            ]
           },
           "annotations": {
             "type": "integer",
@@ -183,6 +193,55 @@
     "ofSha256": {
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "books"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "books": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "pattern": "^[A-Z0-9]{3}$"
+            }
+          },
+          "files": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "annotations": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "partOf": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9+.-]*:\\S+$"
+    },
+    "partOfManifest": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
     }
   },
   "if": {
@@ -192,6 +251,9 @@
   },
   "then": {
     "required": [
+      "id",
+      "license",
+      "files",
       "languages"
     ],
     "properties": {
@@ -209,33 +271,85 @@
             "sha256": false
           }
         }
-      }
+      },
+      "parts": false,
+      "partOf": false,
+      "partOfManifest": false
     }
   },
   "else": {
-    "required": [
-      "texts"
-    ],
-    "dependentRequired": {
-      "languages": [
-        "sourceLanguage"
-      ],
-      "sourceLanguage": [
-        "languages"
+    "if": {
+      "required": [
+        "partOf"
       ]
     },
-    "properties": {
-      "ofManifest": false,
-      "files": {
-        "items": {
+    "then": {
+      "required": [
+        "partOf",
+        "files"
+      ],
+      "properties": {
+        "files": {
+          "items": {
+            "required": [
+              "path",
+              "sha256",
+              "books"
+            ]
+          }
+        },
+        "license": false,
+        "texts": false,
+        "languages": false,
+        "sourceLanguage": false,
+        "parts": false,
+        "of": false,
+        "ofManifest": false,
+        "ofSha256": false,
+        "attribution": false
+      }
+    },
+    "else": {
+      "required": [
+        "id",
+        "license",
+        "texts"
+      ],
+      "dependentRequired": {
+        "languages": [
+          "sourceLanguage"
+        ],
+        "sourceLanguage": [
+          "languages"
+        ]
+      },
+      "properties": {
+        "ofManifest": false,
+        "files": {
+          "items": {
+            "required": [
+              "path",
+              "sha256",
+              "books"
+            ]
+          }
+        },
+        "ofSha256": false,
+        "partOf": false,
+        "partOfManifest": false
+      },
+      "oneOf": [
+        {
           "required": [
-            "path",
-            "sha256",
-            "books"
+            "files"
+          ]
+        },
+        {
+          "required": [
+            "parts"
           ]
         }
-      },
-      "ofSha256": false
+      ]
     }
   }
 }

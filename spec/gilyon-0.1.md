@@ -921,7 +921,9 @@ A body that was written or translated by software MUST have a `creator` of
    order.
 3. **Collections.** A publisher MAY split a collection by book or chapter.
    Every annotation document of a split collection is a complete document. A
-   split collection SHOULD carry a manifest (§16.1).
+   split collection SHOULD carry a manifest (§16.1). A collection that
+   covers many books SHOULD be split by chapter, with a manifest in parts,
+   so that an application can fetch one chapter (§16.5).
 4. **Bodies by language.** The bodies MAY be kept apart from the annotations,
    in one body document per annotation document and language, each language
    in a folder of its own (§16.2). A collection in more than one language
@@ -950,7 +952,8 @@ The manifest of a collection is a JSON object in a file named
 | `created`, `modified` | MAY | string | RFC 3339. |
 | `sourceLanguage` | MUST if `languages` is present | string | BCP 47 tag of the source language. |
 | `languages` | MUST if any file lists `bodies` | object | The languages of the collection (below). Keys are BCP 47 tags. |
-| `files` | MUST | array | One entry per annotation document, in canonical order of content. |
+| `files` | MUST unless `parts` is present | array | One entry per annotation document, in canonical order of content. |
+| `parts` | MAY, in place of `files` | array | The part manifests of a collection whose list of files is itself split (Parts, below). |
 
 Each entry of `files`:
 
@@ -960,7 +963,7 @@ Each entry of `files`:
 | `sha256` | MUST | string | Lowercase hex SHA-256 of the file's bytes. |
 | `books` | MUST | array of strings | USFM codes of the books whose text the file's annotations target. |
 | `id` | SHOULD | string | The `id` of the document in the file. |
-| `ref` | MAY | string | A reference (Appendix B) that covers the file's targets, e.g. `"JOS 1"`. |
+| `ref` | SHOULD when a book is split over several files | string or array of strings | The coverage of the file: a reference (Appendix B), or several, that together contain every place its annotations target, e.g. `"JOS 1"`. Places named only in `links` do not count. A file without `ref` may target any place in its `books`. |
 | `annotations` | MAY | integer | Number of annotations in the file. |
 | `bodies` | MAY | object | The body documents of this file (§16.2). Keys are BCP 47 tags declared in `languages`; each value has `path` (MUST), `sha256` (MUST), `id` (SHOULD) and `entries` (MAY, the number of entries). |
 
@@ -992,6 +995,49 @@ eng/gen001.gilyon-bodies.json   the wording, source language
 eng/jhn001.gilyon-bodies.json
 swe/gen001.gilyon-bodies.json   a translation
 swe/jhn001.gilyon-bodies.json
+```
+
+#### Parts
+
+The manifest of a large collection would list thousands of files. Such a
+collection MAY split the list: its manifest has `parts` in place of `files`,
+and each part is a manifest of its own that lists the files of one or more
+books. An application then reads the collection's manifest and the one part
+it needs.
+
+Each entry of `parts`:
+
+| Member | Req. | Type | Meaning |
+|---|---|---|---|
+| `path` | MUST | string | Location of the part manifest: a URL reference, resolved against the location of the collection's manifest. |
+| `sha256` | MUST | string | Lowercase hex SHA-256 of the part manifest's bytes. |
+| `books` | MUST | array of strings | USFM codes of the books whose text the part's annotations target. |
+| `files` | MAY | integer | Number of files the part lists. |
+| `annotations` | MAY | integer | Number of annotations in the part. |
+
+A part manifest is a JSON object:
+
+| Member | Req. | Type | Meaning |
+|---|---|---|---|
+| `gilyon` | MUST | string | As in the collection's manifest. |
+| `partOf` | MUST | string | `id` of the collection. |
+| `partOfManifest` | SHOULD | string | Location of the collection's manifest: a URL reference, resolved against the location of the part. |
+| `files` | MUST | array | Entries as above. Their paths, and the language folders (`dir`), are resolved against the location of the part manifest. |
+
+A part manifest has no `license`, `texts`, `languages` or `sourceLanguage`:
+those of the collection's manifest apply to every part and are stated once.
+A part manifest is not usable without the collection's manifest. A part is
+not split further in version 0.1, and a translation manifest (§16.3) has no
+parts.
+
+```
+manifest.json                       the collection: licence, texts, languages, parts
+GEN/manifest.json                   a part: the files of Genesis
+GEN/gen001.gilyon.json
+GEN/eng/gen001.gilyon-bodies.json
+JHN/manifest.json
+JHN/jhn001.gilyon.json
+JHN/eng/jhn001.gilyon-bodies.json
 ```
 
 ### 16.2 Body documents
@@ -1246,6 +1292,62 @@ Rules:
    collections available in that language.
 5. How a catalogue is maintained (who may register a publisher, how
    manifests are found and checked) is outside this specification.
+
+### 16.5 Reading part of a collection
+
+An application that shows one chapter should not have to fetch a whole
+collection. The following rules let it find the files it needs from the
+manifest alone.
+
+Rules for a publisher that splits a book over several files:
+
+1. Every annotation MUST be in exactly one file. Nothing is repeated
+   between files.
+2. A book that is divided over several files MUST be divided by the chapters
+   of the base text, in its own numbering (§5.3), not by the chapters of a
+   translation.
+3. An annotation SHOULD be placed in the file of the chapter in which its
+   target begins: the first word, in the order of the base text, of its
+   first target.
+4. The `ref` of a file's manifest entry (§16.1) MUST contain every place the
+   file's annotations target. When an annotation in the file for Joshua 1
+   reaches into chapter 2, the entry's `ref` says so (`"JOS 1:1-2:5"`).
+5. An annotation that spans more than one chapter (the outline of a book, a
+   structure over several chapters) SHOULD be put in a separate file whose
+   `ref` states its extent, so that the `ref` of each chapter file stays
+   within its chapter.
+6. An annotation whose target has no place (a `Lexeme` selector, §7.6)
+   SHOULD be in a file of its own, whose entry has no `ref`.
+7. An annotation whose target is another annotation (§11.3) of the same
+   collection MUST be in the same file as that annotation, so that the two
+   are fetched together. When it targets an annotation of another
+   collection, the `ref` of its file MUST contain the places that
+   annotation targets.
+
+Rules for a Consumer that shows part of a text:
+
+8. It determines which chapters of the base text the shown passage draws
+   on. For a translation these are the chapters that hold the original-
+   language words, or the verses, rendered in the passage; they follow from
+   the translation's alignment and verse numbering. A chapter of a
+   translation can draw on more than one chapter of the base text, and not
+   only on the adjacent ones. A Consumer MUST NOT assume a fixed number of
+   neighbouring chapters.
+9. It fetches every file whose `ref` overlaps those chapters, and every file
+   of the book whose entry has no `ref`. In a collection with `parts`, it
+   reads only the parts whose `books` include the book. It asks only for
+   files the manifest lists.
+10. It leaves out the annotations in those files whose targets fall outside
+    the shown passage. This is not a failure to resolve a target and is not
+    reported as one.
+11. What an annotation points to elsewhere is fetched when it is needed, not
+    before: the passage of a link (§11.1) when the reader follows it, and
+    the other units of a structure that extends beyond the shown passage
+    when the structure is displayed. The place named by the link or the
+    unit tells the Consumer which chapter to fetch, by rules 8 and 9.
+
+A Consumer that follows rules 8 to 10 shows the same annotations for a
+passage as one that has loaded the whole collection.
 
 ## 17. Extensions and registries
 

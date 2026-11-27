@@ -22,6 +22,7 @@ at remote addresses are not fetched; they are reported as not checked.
 """
 import hashlib
 import json
+import re
 import sys
 import unicodedata
 from pathlib import Path
@@ -402,20 +403,76 @@ def load_json(path, schema, errors):
     return None if errors else obj
 
 
-def validate_manifest(path):
-    errors = []
-    man = load_json(path, MANIFEST_SCHEMA, errors)
-    if man is None:
-        return errors
-    if "of" in man:
-        return validate_translation_manifest(path, man)
-    seen_paths, seen_ids = set(), set()
-    for i, entry in enumerate(man["files"]):
-        where = f"files[{i}]"
-        if entry["path"] in seen_paths:
+_REF = re.compile(r"^([A-Z0-9]{3})(?: (\d{1,3})(?:[:.](\d{1,3}|title)[a-z]?)?(?:-(?:(\d{1,3})[:.])?(\d{1,3}|title)[a-z]?)?)?$")
+
+
+def span(ref):
+    """A reference (Appendix B) as (book, (chapter, verse), (chapter, verse)), or None."""
+    m = _REF.match(ref) if isinstance(ref, str) else None
+    if not m:
+        return None
+    book, c1, v1, c2, e = m.groups()
+    num = lambda v: 0 if v == "title" else int(v)   # noqa: E731
+    if c1 is None:
+        return book, (0, 0), (999, 999)
+    c1 = int(c1)
+    if v1 is None:                       # JOS 1, JOS 1-3
+        return book, (c1, 0), (int(e) if e else c1, 999)
+    if e is None:                        # JOS 1:1
+        return book, (c1, num(v1)), (c1, num(v1))
+    return book, (c1, num(v1)), (int(c2) if c2 else c1, num(e))
+
+
+def places(node):
+    """The places the selectors under `node` point at: (book or None, first, last)."""
+    if isinstance(node, list):
+        for x in node:
+            yield from places(x)
+    elif isinstance(node, dict):
+        if isinstance(node.get("ref"), str) and node.get("type") in ("Passage", "Words", "Range", "Point"):
+            sp = span(node["ref"])
+            if sp:
+                yield sp
+        elif node.get("type") in ("Words", "Range", "Point"):
+            for w in selector_words(node):
+                if isinstance(w, str) and re.fullmatch(r"[on]\d{11,12}", w):
+                    cv = (int(w[3:6]), int(w[6:9]))
+                    yield None, cv, cv
+        for k, v in node.items():
+            if k not in ("links", "body"):
+                yield from places(v)
+
+
+def check_coverage(entry, doc, where, errors):
+    """`ref` covers every place the file's annotations target (spec §16.1)."""
+    if "ref" not in entry:
+        return
+    refs = entry["ref"] if isinstance(entry["ref"], list) else [entry["ref"]]
+    spans = [span(r) for r in refs]
+    if None in spans:
+        errors.append(f"{where}: ref is not a reference (Appendix B)")
+        return
+    for sp in spans:
+        if sp[0] not in entry["books"]:
+            errors.append(f"{where}: ref names {sp[0]}, which is not listed in books")
+    for a in doc.get("annotations", []):
+        for book, first, last in places([a.get("target"), a.get("structure")]):
+            if not any((book is None or book == b) and lo <= first and last <= hi for b, lo, hi in spans):
+                errors.append(f"{where}: {a.get('id')} targets a place outside ref")
+                break
+
+
+def check_files(man, files, base, prefix, seen, errors):
+    """The annotation documents one manifest lists, with their body documents."""
+    seen_paths, seen_ids = seen[0], seen[1]
+    home, about = (seen[2], seen[3]) if len(seen) > 2 else ({}, [])
+    for i, entry in enumerate(files):
+        where = f"{prefix}files[{i}]"
+        f = locate(Path(base), entry["path"])
+        key = entry["path"] if f is None else str(f)
+        if key in seen_paths:
             errors.append(f"{where}: path listed twice")
-        seen_paths.add(entry["path"])
-        f = locate(Path(path).parent, entry["path"])
+        seen_paths.add(key)
         if f is None:
             WARNINGS.append(f"{entry['path']}: remote, not checked")
             continue
@@ -446,14 +503,117 @@ def validate_manifest(path):
                  if "ref" in t.get("selector", {})}
         if not books <= set(entry["books"]):
             errors.append(f"{where}: annotates {sorted(books - set(entry['books']))}, not listed in books")
+        check_coverage(entry, doc, where, errors)
+        for a in doc.get("annotations", []):
+            home[a.get("id")] = key
+            for t in (a["target"] if isinstance(a.get("target"), list) else [a.get("target")]):
+                if isinstance(t, dict) and "annotation" in t:
+                    about.append((where, key, a.get("id"), t["annotation"]))
         if "languages" in man:
-            check_language_files(man, entry, doc, Path(path).parent, where, errors)
+            check_language_files(man, entry, doc, Path(base), where, errors)
         elif "bodies" in entry:
             errors.append(f"{where}: bodies listed, but the manifest declares no languages")
         # bodies 'separate' and no languages: a collection of anchors only (spec §16.2 rule 5)
+
+
+def check_part(man, part, f, prefix, seen, errors):
+    """One part manifest of a collection (spec §16.1, Parts). -> its file entries"""
+    errs = []
+    pm = load_json(f, MANIFEST_SCHEMA, errs)
+    errors.extend(f"{prefix}{e}" for e in errs)
+    if pm is None:
+        return []
+    if "partOf" not in pm:
+        errors.append(f"{prefix}not a part manifest (no partOf)")
+        return []
+    if pm["partOf"] != man["id"]:
+        errors.append(f"{prefix}partOf is not the id of the collection")
+    if pm["gilyon"] != man["gilyon"]:
+        errors.append(f"{prefix}format version differs from the collection's")
+    for i, e in enumerate(pm["files"]):
+        if not set(e["books"]) <= set(part["books"]):
+            errors.append(f"{prefix}files[{i}]: books {sorted(set(e['books']) - set(part['books']))} "
+                          f"are not listed for this part")
+    if "files" in part and part["files"] != len(pm["files"]):
+        errors.append(f"{prefix}the collection states {part['files']} files, the part lists {len(pm['files'])}")
+    check_files(man, pm["files"], Path(f).parent, prefix, seen, errors)
+    return pm["files"]
+
+
+def all_files(man, base):
+    """Every (file entry, folder its paths resolve against) of a collection, through its parts.
+    Parts that cannot be read are skipped."""
+    for e in man.get("files", []):
+        yield e, Path(base)
+    for part in man.get("parts", []):
+        f = locate(Path(base), part["path"]) if isinstance(part, dict) and "path" in part else None
+        if f is None or not f.is_file():
+            continue
+        try:
+            pm = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        for e in pm.get("files", []) if isinstance(pm, dict) else []:
+            yield e, f.parent
+
+
+def validate_manifest(path):
+    errors = []
+    man = load_json(path, MANIFEST_SCHEMA, errors)
+    if man is None:
+        return errors
+    if "of" in man:
+        return validate_translation_manifest(path, man)
+    if "partOf" in man:
+        return validate_part_alone(path, man)
+    base = Path(path).parent
+    seen = (set(), set(), {}, [])
+    check_files(man, man.get("files", []), base, "", seen, errors)
+    part_paths = set()
+    for i, part in enumerate(man.get("parts", [])):
+        where = f"parts[{i}]"
+        if part["path"] in part_paths:
+            errors.append(f"{where}: path listed twice")
+        part_paths.add(part["path"])
+        f = locate(base, part["path"])
+        if f is None:
+            WARNINGS.append(f"{part['path']}: remote, not checked")
+            continue
+        if not f.is_file():
+            errors.append(f"{where}: {part['path']} not found")
+            continue
+        if hashlib.sha256(f.read_bytes()).hexdigest() != part["sha256"]:
+            errors.append(f"{where}: SHA-256 of {part['path']} differs from the manifest")
+        files = check_part(man, part, f, f"{where}: {part['path']}: ", seen, errors)
+        n = sum(e.get("annotations", 0) for e in files)
+        if "annotations" in part and files and all("annotations" in e for e in files) and part["annotations"] != n:
+            errors.append(f"{where}: states {part['annotations']} annotations, its files state {n}")
+    for where, key, aid, target in seen[3]:       # spec §16.5 rule 7
+        if target in seen[2] and seen[2][target] != key:
+            errors.append(f"{where}: {aid} targets an annotation that is in another file of the collection")
     if "languages" in man and man["sourceLanguage"] not in man["languages"]:
         errors.append("sourceLanguage is not declared in languages")
     check_dirs(man, errors)
+    return errors
+
+
+def validate_part_alone(path, pm):
+    """A part manifest given on its own: checked with the collection manifest it names."""
+    errors = []
+    ref = pm.get("partOfManifest")
+    cm = locate(Path(path).parent, ref) if ref else None
+    if cm is None or not cm.is_file():
+        WARNINGS.append("the collection's manifest is not available; the files were not checked")
+        return errors
+    man = json.loads(cm.read_text(encoding="utf-8"))
+    mine = [p for p in man.get("parts", [])
+            if (lambda f: f is not None and f.resolve() == Path(path).resolve())(locate(cm.parent, p["path"]))]
+    if not mine:
+        errors.append(f"{ref} does not list this part")
+        return errors
+    if hashlib.sha256(Path(path).read_bytes()).hexdigest() != mine[0]["sha256"]:
+        errors.append("SHA-256 differs from the one the collection's manifest states")
+    check_part(man, mine[0], path, "", (set(), set()), errors)
     return errors
 
 
@@ -477,14 +637,14 @@ def validate_translation_manifest(path, man):
             errors.append(f"{ref} is itself a translation manifest")
         if coll.get("gilyon") != man["gilyon"]:
             errors.append("format version differs from the collection's")
-        for e in coll.get("files", []):
-            f = locate(coll_base, e["path"])
+        for e, fbase in all_files(coll, coll_base):
+            f = locate(fbase, e["path"])
             if f is None or not f.is_file():
                 continue
             d = json.loads(f.read_text(encoding="utf-8"))
             docs[d["id"]] = (d, e["path"])
             sb = e.get("bodies", {}).get(coll.get("sourceLanguage"))
-            sf = locate(coll_base, sb["path"]) if sb else None
+            sf = locate(fbase, sb["path"]) if sb else None
             if sf is not None and sf.is_file():
                 source_bodies[d["id"]] = json.loads(sf.read_text(encoding="utf-8"))
         for tag in man["languages"]:
@@ -597,7 +757,7 @@ def kind(path):
     except Exception:  # noqa: BLE001
         return validate
     if isinstance(obj, dict):
-        if "files" in obj:
+        if "files" in obj or "parts" in obj:
             return validate_manifest
         if "collections" in obj or "publishers" in obj:
             return validate_catalogue
